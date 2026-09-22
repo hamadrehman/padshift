@@ -13,6 +13,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      HAS_SIGNING_KEY: ${{ secrets.KEYSTORE_B64 != '' }}  # secrets context is not allowed in step `if`
     defaults:
       run:
         working-directory: padshift
@@ -25,7 +27,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
 
       - name: Write signing key from secrets
-        if: ${{ secrets.KEYSTORE_B64 != '' }}
+        if: env.HAS_SIGNING_KEY == 'true'
         env:
           KEYSTORE_B64: ${{ secrets.KEYSTORE_B64 }}
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
