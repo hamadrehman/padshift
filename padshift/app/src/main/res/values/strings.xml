@@ -1,0 +1,3 @@
+<resources>
+    <string name="a11y_desc">Optional: lets Home/Guide + button chords on an external gamepad trigger Android Back, Home, Recents and volume. Normal gamepad input passes through untouched.</string>
+</resources>

@@ -1,0 +1,11 @@
+# Gradle / Android build output
+padshift/.gradle/
+padshift/build/
+padshift/app/build/
+padshift/local.properties
+# APKs are published as GitHub release assets, not committed
+*.apk
+# Raw RP5 settings/property dumps from reverse-engineering (contain device identifiers)
+before-*.txt
+after-*.txt
+.DS_Store
