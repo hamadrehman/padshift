@@ -9,3 +9,6 @@ padshift/local.properties
 before-*.txt
 after-*.txt
 .DS_Store
+# Release signing key and its passwords (CI gets them from repository secrets)
+*.jks
+keystore.properties

@@ -71,6 +71,15 @@ docked; Xbox-mode save/restore (test C); two controllers at once (test D); reboo
   [strings.xml](padshift/app/src/main/res/values/strings.xml), Gradle files. No AndroidX or other dependencies.
 - Prefs (`SharedPreferences "padshift"`): `auto` (default true), `shortcuts` (default true), `prev` (0 Xbox / 1 Retro, default 1).
 
+## CI and signing (added 2026-09-21)
+
+- `.github/workflows/build.yml` builds `assembleRelease` on every push to `main`, on `v*` tags, and on PRs; uploads
+  `PadShift.apk` as an artifact; refreshes a rolling `latest` pre-release on `main`; creates a release on `v*` tags.
+- Release signing: `padshift/release.jks` + `padshift/keystore.properties` (both gitignored, alias `padshift`). The same
+  key is in repository secrets `KEYSTORE_B64`, `KEYSTORE_PASSWORD`, `KEY_ALIAS`, `KEY_PASSWORD`. **Back up the .jks and
+  keystore.properties**: secrets cannot be read back, and losing the key means users must uninstall to update.
+- `lint { checkReleaseBuilds = false }` because `ExpiredTargetSdkVersion` would otherwise fail release builds.
+
 ## Build and install
 
 ```bash
